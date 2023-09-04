@@ -53,9 +53,9 @@ for (let i = 1; i <= 3; i += 3) {
 }
 
 if (puntuacion < 12) {
-    alert("Fin del juego. Tu puntuación final es: " + puntuacion);
+    alert('¡¡FELICITACIONES!!. Tu puntuación final es: ' + puntuacion + '\n Disfruta un 20% de descuentos en todos nuestros servivios!!');
 } else {
-    alert("¡¡FELICITACIONES!!. Tu puntuación final es: " + puntuacion);
+    alert('Fin del juego. Tu puntuación final es: ' + puntuacion);
 }
 
 
