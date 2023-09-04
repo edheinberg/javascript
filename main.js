@@ -54,11 +54,13 @@ for (let i = 1; i <= 3; i += 3) {
 
 if (puntuacion === 9) {
     alert('¡¡FELICITACIONES!!. Tu puntuación final es: ' + puntuacion + '\n Disfruta un 25% de descuentos en todos nuestros servicios!!');
+    alert('Te invitamos a que veas nuestro catálogo y aproveches tu beneficio!');
 } else {
     alert('Fin del juego. Tu puntuación final es: ' + puntuacion);
+    alert('Te invitamos a que veas nuestro catálogo de productos y servicios!');
 }
 
-alert('Te invitamos a que veas nuestro catálogo y aproveches tu beneficio!');
+
 
 const comprarProductos = () => {
     let producto = '';
@@ -69,47 +71,49 @@ const comprarProductos = () => {
     let seguirComprando = true;
 
     do {
-        catalogo = prompt('¿Te gustaría comprar una guitarra, cursos o accesorios?');
+        catalogo = prompt('¿Te gustaría comprar una GUITARRA, CURSOS o ACCESORIOS?').toUpperCase();
 
-        if (catalogo == 'guitarra') {
-            producto = prompt('¿Querés una criolla, acustica o electrica?');
-        } else if (catalogo == 'cursos') {
-            producto = prompt('¿Modalidad virtual, presencial o tutoriales?');
+        if (catalogo == 'GUITARRA') {
+            producto = prompt('¿Querés una CRIOLLA, ACUSTICA o ELECTRICA?').toUpperCase();
+        } else if (catalogo == 'CURSOS') {
+            producto = prompt('¿Modalidad VIRTUAL, PRESENCIAL o TUTORIALES?').toUpperCase();
+        } else if (catalogo == 'ACCESORIOS') {
+            producto = prompt('¿Buscas cuerdas, puas o fundas?').toUpperCase();
         } else {
-            producto = prompt('¿Buscas cuerdas, puas o fundas?');
+            alert('Alguna de las opciones ingresadas no es correcta, por favor intenta nuevamente')
         }
 
-        cantidad = Number(prompt('¿Cuantos querés comprar?'));
+        cantidad = Number(prompt('¿Cuantos/as querés comprar?'));
 
         console.log(producto);
         console.log(cantidad);
 
         switch (producto) {
-            case 'criolla':
+            case 'CRIOLLA':
                 precio = 50000;
                 break;
-            case 'acustica':
+            case 'ACUSTICA':
                 precio = 65000;
                 break;
-            case 'electrica':
+            case 'ELECTRICA':
                 precio = 8000;
                 break;
-            case 'virtual':
+            case 'VIRTUAL':
                 precio = 4000;
                 break;
-            case 'presencial':
+            case 'PRESENCIAL':
                 precio = 5000;
                 break;
-            case 'tutoriales':
+            case 'TUTORIALES':
                 precio = 2500;
                 break;
-            case 'cuerdas':
+            case 'CUERDAS':
                 precio = 1500;
                 break;
-            case 'puas':
+            case 'PUAS':
                 precio = 500;
                 break;
-            case 'fundas':
+            case 'FUNDAS':
                 precio = 8000;
                 break;
             default:
@@ -149,9 +153,15 @@ const precioFinal = aplicarDescuento(subtotal);
 
 mostarDetalleDeCompra(precioFinal);
 
-alert('Ahora te derivamos para que elijas la opción de pago que te guste y completes los datos');
-alert('Agradecemos mucho por tu compra ' + nombre);
-alert('Esperamos que regreses pronto')
+if (precioFinal != 0) {
+    alert('Ahora te derivamos para que elijas la opción de pago que te guste y completes los datos');
+    alert('Agradecemos mucho por tu compra ' + nombre);
+    alert('Esperamos que regreses pronto');
+} else {
+    alert('Agradecemos mucho por tu visita ' + nombre);
+    alert('Esperamos que regreses pronto');
+}
+
 
 
 
