@@ -191,39 +191,68 @@
 // *****************SEGUNDA ENTREGA*****************//
 
 
-alert('¡Bienvenido a TocandoLaGuitarra! \n\n El sitio de música más iteractivo que hay');
+// alert('¡Bienvenido a TocandoLaGuitarra! \n\n El sitio de música más discruptivo que hay...');
 
-let nombre = prompt('¿Cómo es tu nombre?');
-let apellido = prompt('¿Cómo es tu apellido?');
-let edad = parseInt(prompt('Y, ¿Cuál es tu edad?'));
+// alert('A continuación te pediremos unos datos para que puedas acceder a nuestros productos y servicios con importantes beneficios!!');
 
-const ESPACIO = ' ';
+// let nombre = prompt('¿Cómo es tu nombre?');
+// let apellido = prompt('¿Cómo es tu apellido?');
+// let edad = parseInt(prompt('Y, ¿Cuál es tu edad?'));
+// let mail = prompt('Ingrese su correo electrónico: ')
 
-if (nombre == '' || apellido == '' || edad == 0) {
-    alert('Los datos ingresados son incorrectos, intenta nuevamente')
-} else {
-    alert('Gracias por visitarnos ' + nombre + ESPACIO + apellido);
-}
+// if (nombre == '' || apellido == '' || edad == 0 || mail == '') {
+//     alert('Los datos ingresados son incorrectos, intenta nuevamente')
+// } else {
+//     alert('Gracias por visitarnos ' + nombre + ESPACIO + apellido);
+// }
 
-// let precio1 = Number(prompt('Ingrese valor deseado: '));
-// let modalidad1 = prompt('Ingrese modalidad deseada: ');
-// let dias1 = Number(prompt('Ingrese dias que quiere asistir: '));
-// let pago1 = prompt('Ingrese modalidad de pago deseada: ');
-
-
-// class ClasesGuitarra {
-//     constructor(precio, modalidad, dias, pago) {
-//         this.precio = precio;
-//         this.modalidad = modalidad;
-//         this.dias = dias;
-//         this.pago = pago;
+// class DatosIngreso {
+//     constructor(nombre, apellido, edad, mail) {
+//         this.nombre = nombre;
+//         this.apellido = apellido;
+//         this.edad = edad;
+//         this.mail = mail;
 //     }
 // }
 
-// const alumno1 = new ClasesGuitarra(8000, "Virual", 8, "Débito");
-// // console.log(alumno1)
+// const alumno1 = new DatosIngreso(nombre, apellido, edad, mail);
+// console.log(alumno1)
 
-// for (propiedades in alumno1) {
-//     console.log(propiedades);
-// }
+alert('A continuación te mostraremos los productos y servicios que puedes acceder!!')
+
+const carrito = [];
+
+const conStockAccesorios = () => {
+    const accesoriosStock = accesorios.filter((accesorios) => accesorios.stock === "Si");
+    console.log(accesoriosStock)
+}
+
+const conStockGuitarras = () => {
+    const guitarrasStock = guitarras.filter((guitarras) => guitarras.stock === "Si");
+    console.log(guitarrasStock)
+}
+
+const comprar = () => {
+    const productosEnStock = confirm('¿Desea que le mostremos solo los productos con stock?');
+
+    if (productosEnStock) {
+        conStockAccesorios();
+        conStockGuitarras();
+        alert('Podrás visualizar los productos que tenemos con disponibilidad')
+    } else {
+        alert('Podrás visualizar todos los productos que ofrecemos');
+    }
+}
+
+const mostrarProductos = () => {
+    const listaGuitarras = guitarras.map(guitarras => {
+        return '- ' + guitarras.nombre + ' $' + guitarras.precio
+    });
+
+    alert('Lista de precios:' + '\n\n' + listaGuitarras.join('\n'));
+    mostrarProductos(listaGuitarras)
+}
+
+
+comprar();
 
