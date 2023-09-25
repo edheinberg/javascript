@@ -4,7 +4,7 @@ const guitarras =
     [
         {
             id: 1,
-            nombre: "Yamaha C-40",
+            nombre: "Stratocaster",
             tipo: "Criolla",
             color: "Wengue",
             precio: 50000,
@@ -14,7 +14,7 @@ const guitarras =
 
         {
             id: 2,
-            nombre: "Fender FA-125",
+            nombre: "Gracia",
             tipo: "Acústica",
             color: "Natural",
             precio: 60000,
@@ -24,7 +24,7 @@ const guitarras =
 
         {
             id: 3,
-            nombre: "Fender Stratocaster",
+            nombre: "Fender",
             tipo: "Eléctrica",
             color: "Roja",
             precio: 150000,
@@ -34,7 +34,7 @@ const guitarras =
 
         {
             id: 4,
-            nombre: "Yamaha Pacífica 112J",
+            nombre: "Yamaha",
             tipo: "Eléctrica",
             descripcion: "Unos Zapatos que re van con vos",
             precio: 175000,
@@ -44,7 +44,7 @@ const guitarras =
 
         {
             id: 5,
-            nombre: "Alhambra 1C EZ",
+            nombre: "Alhambra",
             tipo: "Electrocriolla",
             color: "Caoba",
             precio: 125000,
@@ -54,7 +54,7 @@ const guitarras =
 
         {
             id: 6,
-            nombre: "Jackson Z-250",
+            nombre: "Jackson",
             tipo: "Electroacústica",
             color: "Negra",
             precio: 222000,
@@ -115,7 +115,7 @@ const accesorios =
     [
         {
             id: 11,
-            nombre: "Púas",
+            nombre: "Puas",
             tipo: "Guitarras",
             color: "Personalizado",
             precio: 800,
@@ -125,7 +125,7 @@ const accesorios =
 
         {
             id: 12,
-            nombre: "Juego Cuerdas Guitarra",
+            nombre: "Cuerdas",
             tipo: "Cuerdas",
             precio: 2500,
             stock: "Si",
@@ -134,7 +134,7 @@ const accesorios =
 
         {
             id: 13,
-            nombre: "Amplificador Marshall",
+            nombre: "Amplificador",
             tipo: "Sonido",
             precio: 44000,
             stock: "Si",
@@ -143,7 +143,7 @@ const accesorios =
 
         {
             id: 14,
-            nombre: "Pedalera Guitarra Eléctrica",
+            nombre: "Pedalera",
             tipo: "Eléctrica",
             precio: 50000,
             stock: "No",

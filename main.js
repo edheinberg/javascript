@@ -224,34 +224,194 @@ const carrito = [];
 
 const conStockAccesorios = () => {
     const accesoriosStock = accesorios.filter((accesorios) => accesorios.stock === "Si");
-    console.log(accesoriosStock)
+    return console.log(accesoriosStock)
 }
 
 const conStockGuitarras = () => {
     const guitarrasStock = guitarras.filter((guitarras) => guitarras.stock === "Si");
-    console.log(guitarrasStock)
+    return console.log(guitarrasStock)
 }
 
-const comprar = () => {
-    const productosEnStock = confirm('¿Desea que le mostremos solo los productos con stock?');
 
-    if (productosEnStock) {
-        conStockAccesorios();
-        conStockGuitarras();
-        alert('Podrás visualizar los productos que tenemos con disponibilidad')
-    } else {
-        alert('Podrás visualizar todos los productos que ofrecemos');
+const comprar = () => {
+    let seguirComprando = true;
+
+    while (seguirComprando) {
+        const categoriasCompra = prompt('¿Qué desea ver?: GUITARRAS o ACCESORIOS').toUpperCase();
+
+        if (categoriasCompra === 'GUITARRAS') {
+            mostrarGuitarras();
+        } else if (categoriasCompra === 'ACCESORIOS') {
+            mostrarAccesorios();
+        } else {
+            alert('La opción ingresada es incorrecta. Intente nuevamente.');
+            continue;
+        }
+
+        seguirComprando = confirm('¿Desea seguir comprando?');
+
+        if (!seguirComprando) {
+            alert('Muchas Gracias por visitarnos. ¡Te esperamos pronto nuevamente!');
+        }
     }
 }
 
-const mostrarProductos = () => {
+
+// const comprar = () => {
+//     do {
+//         const categoriasCompra = prompt('¿Que desea ver?: GUITARRAS o ACCESORIOS').toUpperCase();
+
+//         if (categoriasCompra === 'GUITARRAS') {
+//             mostrarGuitarras();
+//         } else if (categoriasCompra === 'ACCESORIOS') {
+//             mostrarAccesorios();
+//         } else {
+//             alert('La opción ingresada es incorrecta!! Intente nuevamente');
+//         }
+
+//         intentarNuevamente = confirm('¿Desea seguir comprando?')
+
+//     } while (intentarNuevamente)
+
+// }
+
+// const productosEnStock = () => {
+//     const enStock = confirm('¿Desea que le mostremos solo los productos con stock?');
+
+//     if (enStock) {
+//         alert('Podrás visualizar los productos que tenemos con disponibilidad')
+//     } else {
+//         alert('Podrás visualizar todos los productos que ofrecemos');
+//     }
+// }
+
+const mostrarGuitarras = () => {
     const listaGuitarras = guitarras.map(guitarras => {
         return '- ' + guitarras.nombre + ' $' + guitarras.precio
     });
 
-    alert('Lista de precios:' + '\n\n' + listaGuitarras.join('\n'));
-    mostrarProductos(listaGuitarras)
+    alert('Aquí encontrarás la lista de Precios Guitarras:' + '\n\n' + listaGuitarras.join('\n'));
+    comprarGuitarras(listaGuitarras)
 }
+
+const mostrarAccesorios = () => {
+    const listaAccesorios = accesorios.map(accesorios => {
+        return '- ' + accesorios.nombre + ' $' + accesorios.precio
+    });
+
+    alert('Aquí encontrarás la lista de Precios Accesorios:' + '\n\n' + listaAccesorios.join('\n'));
+    comprarAccesorios(listaAccesorios)
+}
+
+const comprarGuitarras = (listaGuitarras) => {
+    let guitarraNombre = '';
+    let guitarraCantidad = 0;
+    let seguirComprando = false;
+
+    do {
+        guitarraNombre = prompt('¿Qué guitarra desea comprar?' + '\n\n' + listaGuitarras.join('\n'));
+        guitarraCantidad = parseInt(prompt('¿Cuantas desea comprar?'));
+
+        const encontrado = guitarras.some(guitarra => guitarra.nombre.toLowerCase() === guitarraNombre.toLowerCase());
+
+        if (encontrado) {
+            const guitarra = guitarras.find(guitarra => guitarra.nombre.toLowerCase() === guitarraNombre.toLowerCase());
+            agregarGuitarraCarrito(guitarra, guitarraCantidad);
+        } else {
+            alert('El producto no se encontra en el catálogo.')
+        }
+
+        seguirComprando = confirm('¿Desea seguir comprando?');
+    } while (seguirComprando);
+
+    confirmarCompra();
+}
+
+const comprarAccesorios = (listaAccesorios) => {
+    let accesorioNombre = '';
+    let accesorioCantidad = 0;
+    let seguirComprando = false;
+
+    do {
+        accesorioNombre = prompt('¿Qué producto desea comprar?' + '\n\n' + listaAccesorios.join('\n'));
+        accesorioCantidad = parseInt(prompt('¿Cuantos queres comprar?'));
+
+        const encontrado = accesorios.some(accesorio => accesorio.nombre.toLowerCase() === accesorioNombre.toLowerCase());
+
+        if (encontrado) {
+            const accesorio = accesorios.find(accesorio => accesorio.nombre.toLowerCase() === accesorioNombre.toLowerCase());
+            agregarAccesorioCarrito(accesorio, accesorioCantidad);
+        } else {
+            alert('El producto no se encontra en el catálogo.')
+        }
+
+        seguirComprando = confirm('¿Desea seguir comprando?');
+    } while (seguirComprando)
+
+    confirmarCompra();
+}
+
+const agregarGuitarraCarrito = (guitarra, guitarraCantidad) => {
+    const guitarraId = guitarra.id;
+    const guitarraRepetido = carrito.find(guitarra => guitarra.id === guitarraId);
+    if (!guitarraRepetido) {
+        guitarra.cantidad += guitarraCantidad;
+        carrito.push(guitarra);
+    } else {
+        guitarraRepetido.cantidad += guitarraCantidad;
+    }
+    console.log(carrito);
+    // console.log(guitarraRepetido);
+}
+
+const agregarAccesorioCarrito = (accesorio, accesorioCantidad) => {
+    const accesorioId = accesorio.id;
+    const accesorioRepetido = carrito.find(accesorio => accesorio.id === accesorioId);
+    if (!accesorioRepetido) {
+        accesorio.cantidad += accesorioCantidad;
+        carrito.push(accesorio);
+    } else {
+        accesorioRepetido.cantidad += accesorioCantidad;
+    }
+    console.log(carrito);
+    // console.log(accesorioRepetido);
+}
+
+const confirmarCompra = () => {
+    const listaCarrito = carrito.map(producto => {
+        return '- ' + producto.nombre + ' | Cantidad: ' + producto.cantidad;
+    });
+
+    const confirmarCompra = confirm('Carrito: '
+        + '\n\n' + listaCarrito.join('\n')
+        + '\n\nPara continuar presione "Aceptar" o "Cancelar" para eliminar productos del carrito'
+    );
+
+    if (confirmarCompra) {
+        const totalAPagar = carrito.reduce((acumulador, producto) => {
+            return acumulador + (producto.precio * producto.cantidad);
+        }, 0);
+
+        alert(`El total a pagar es: $${totalAPagar}`);
+    } else {
+        const productoAEliminar = prompt('Ingrese el nombre del producto a eliminar:');
+        eliminarProductoCarrito(productoAEliminar);
+    }
+}
+
+const eliminarProductoCarrito = (productoAEliminar) => {
+    carrito.forEach((producto, index) => {
+        if (producto.nombre.toLowerCase() === productoAEliminar) {
+            if (producto.cantidad > 1) {
+                producto.cantidad--
+            } else {
+                carrito.splice(index, 1)
+            }
+        }
+    })
+    confirmarCompra();
+}
+
 
 
 comprar();
