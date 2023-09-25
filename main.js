@@ -188,7 +188,22 @@
 // console.log(clasesGuitarra)
 
 
-// *****************SEGUNDA ENTREGA************************************//
+// *****************SEGUNDA ENTREGA*****************//
+
+
+alert('¡Bienvenido a TocandoLaGuitarra! \n\n El sitio de música más iteractivo que hay');
+
+let nombre = prompt('¿Cómo es tu nombre?');
+let apellido = prompt('¿Cómo es tu apellido?');
+let edad = parseInt(prompt('Y, ¿Cuál es tu edad?'));
+
+const ESPACIO = ' ';
+
+if (nombre == '' || apellido == '' || edad == 0) {
+    alert('Los datos ingresados son incorrectos, intenta nuevamente')
+} else {
+    alert('Gracias por visitarnos ' + nombre + ESPACIO + apellido);
+}
 
 // let precio1 = Number(prompt('Ingrese valor deseado: '));
 // let modalidad1 = prompt('Ingrese modalidad deseada: ');
