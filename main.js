@@ -191,32 +191,34 @@
 // *****************SEGUNDA ENTREGA*****************//
 
 
-// alert('¡Bienvenido a TocandoLaGuitarra! \n\n El sitio de música más discruptivo que hay...');
+alert('¡Bienvenido a TocandoLaGuitarra! \n\n El sitio de música más discruptivo que hay...');
 
-// alert('A continuación te pediremos unos datos para que puedas acceder a nuestros productos y servicios con importantes beneficios!!');
+alert('A continuación te pediremos unos datos para que puedas acceder a nuestros productos y servicios con importantes beneficios!!');
 
-// let nombre = prompt('¿Cómo es tu nombre?');
-// let apellido = prompt('¿Cómo es tu apellido?');
-// let edad = parseInt(prompt('Y, ¿Cuál es tu edad?'));
-// let mail = prompt('Ingrese su correo electrónico: ')
+let nombre = prompt('¿Cómo es tu nombre?');
+let apellido = prompt('¿Cómo es tu apellido?');
+let edad = parseInt(prompt('Y, ¿Cuál es tu edad?'));
+let mail = prompt('Ingrese su correo electrónico: ');
 
-// if (nombre == '' || apellido == '' || edad == 0 || mail == '') {
-//     alert('Los datos ingresados son incorrectos, intenta nuevamente')
-// } else {
-//     alert('Gracias por visitarnos ' + nombre + ESPACIO + apellido);
-// }
+const ESPACIO = ' ';
 
-// class DatosIngreso {
-//     constructor(nombre, apellido, edad, mail) {
-//         this.nombre = nombre;
-//         this.apellido = apellido;
-//         this.edad = edad;
-//         this.mail = mail;
-//     }
-// }
+if (nombre === '' || apellido === '' || edad === 0 || mail === '') {
+    alert('Los datos ingresados son incorrectos, intenta nuevamente');
+} else {
+    alert('Gracias por visitarnos ' + nombre + ESPACIO + apellido);
+}
 
-// const alumno1 = new DatosIngreso(nombre, apellido, edad, mail);
-// console.log(alumno1)
+class DatosIngreso {
+    constructor(nombre, apellido, edad, mail) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.mail = mail;
+    }
+}
+
+const alumno1 = new DatosIngreso(nombre, apellido, edad, mail);
+console.log(alumno1);
 
 alert('A continuación te mostraremos los productos y servicios que puedes acceder!!')
 
@@ -255,35 +257,6 @@ const comprar = () => {
         }
     }
 }
-
-
-// const comprar = () => {
-//     do {
-//         const categoriasCompra = prompt('¿Que desea ver?: GUITARRAS o ACCESORIOS').toUpperCase();
-
-//         if (categoriasCompra === 'GUITARRAS') {
-//             mostrarGuitarras();
-//         } else if (categoriasCompra === 'ACCESORIOS') {
-//             mostrarAccesorios();
-//         } else {
-//             alert('La opción ingresada es incorrecta!! Intente nuevamente');
-//         }
-
-//         intentarNuevamente = confirm('¿Desea seguir comprando?')
-
-//     } while (intentarNuevamente)
-
-// }
-
-// const productosEnStock = () => {
-//     const enStock = confirm('¿Desea que le mostremos solo los productos con stock?');
-
-//     if (enStock) {
-//         alert('Podrás visualizar los productos que tenemos con disponibilidad')
-//     } else {
-//         alert('Podrás visualizar todos los productos que ofrecemos');
-//     }
-// }
 
 const mostrarGuitarras = () => {
     const listaGuitarras = guitarras.map(guitarras => {
